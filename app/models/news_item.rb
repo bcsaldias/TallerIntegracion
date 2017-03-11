@@ -2,14 +2,14 @@ class NewsItem < ApplicationRecord
   has_many :comments, dependent: :destroy
   validates :lead, length: {maximum: 250}, allow_blank: true
 
-  def comments
-    Comment.where(:news_item_id => self.id)
-  end
-  
   def count_comments
-    self.comments.count
+    Comment.where(:news_item_id => self.id).count
   end
+ 
 
+  
+  #def index_view
+  #	@selected_news = NewsItem.order('created_at DESC').limit(10)
 
 
 end

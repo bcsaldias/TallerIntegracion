@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
     
+    root 'news_paper#index', as: 'news_paper_index'
+
 	resources :news_items do
 	    resources :comments
 	end

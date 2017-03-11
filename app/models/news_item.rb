@@ -4,7 +4,7 @@ class NewsItem < ApplicationRecord
   default_scope { order(created_at: :desc) }
   #after_initialize :cropped_body
   
-  def self.list
+  def self.formatted_list
     NewsItem.all.each do |item|
       item.cropped_body
     end

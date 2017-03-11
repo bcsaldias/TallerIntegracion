@@ -4,7 +4,7 @@ class NewsItemsController < ApplicationController
   # GET /news_items
   # GET /news_items.json
   def index
-    @news_items = NewsItem.list
+    @news_items = NewsItem.formatted_list
   end
 
   # GET /news_items/1

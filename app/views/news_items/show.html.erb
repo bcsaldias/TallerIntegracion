@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Título:</strong>
+  <%= @news_item.title %>
+</p>
+
+<p>
+  <strong>Bajada:</strong>
+  <%= @news_item.lead %>
+</p>
+
+<p>
+  <strong>Cuerpo:</strong>
+  <%= @news_item.body %>
+</p>
+
+<%= link_to 'Editar', edit_news_item_path(@news_item) %> |
+<%= link_to 'Volver', news_items_path %>

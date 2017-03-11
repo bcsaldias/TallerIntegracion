@@ -3,9 +3,9 @@
 one:
   author: MyString
   body: MyText
-  new_item: one
+  news_item: one
 
 two:
   author: MyString
   body: MyText
-  new_item: two
+  news_item: two

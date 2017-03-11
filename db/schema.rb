@@ -15,13 +15,13 @@ ActiveRecord::Schema.define(version: 20170308020256) do
   create_table "comments", force: :cascade do |t|
     t.string   "author"
     t.text     "body"
-    t.integer  "new_item_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["new_item_id"], name: "index_comments_on_new_item_id"
+    t.integer  "news_item_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["news_item_id"], name: "index_comments_on_news_item_id"
   end
 
-  create_table "new_items", force: :cascade do |t|
+  create_table "news_items", force: :cascade do |t|
     t.string   "title"
     t.string   "lead",       limit: 250
     t.text     "body"

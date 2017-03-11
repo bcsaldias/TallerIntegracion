@@ -21,9 +21,10 @@
     <%= f.text_area :body %>
   </div>
 
+
   <div class="field">
-    <%= f.label :noticia %>
-    <%= f.text_field :news_item_id %>
+    <%= f.label :noticia if not params[:news_item_id]%>
+    <%= f.text_field :news_item_id if not params[:news_item_id] %>
   </div>
 
   <div class="actions">

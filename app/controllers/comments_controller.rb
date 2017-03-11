@@ -6,7 +6,8 @@ class CommentsController < ApplicationController
   def index
 
     if params[:news_item_id]
-      @comments = Comment.where(news_item_id: params[:news_item_id]).entries
+      @news_item_id = params[:news_item_id]
+      @comments = Comment.where(news_item_id: @news_item_id).entries
     else
       @comments = Comment.all
     end

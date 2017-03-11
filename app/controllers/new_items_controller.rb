@@ -15,6 +15,7 @@ class NewItemsController < ApplicationController
   # GET /new_items/new
   def new
     @new_item = NewItem.new
+    @maximum_length = NewItem.validators_on( :lead ).first.options[:maximum]
   end
 
   # GET /new_items/1/edit
@@ -29,6 +30,7 @@ class NewItemsController < ApplicationController
     respond_to do |format|
       if @new_item.save
         format.html { redirect_to @new_item, notice: 'Noticia creada exitosamente.' }
+        format.js
         format.json { render :show, status: :created, location: @new_item }
       else
         format.html { render :new }

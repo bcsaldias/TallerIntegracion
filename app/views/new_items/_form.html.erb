@@ -18,8 +18,16 @@
 
   <div class="field">
     <%= f.label :bajada %>
-    <%= f.text_area :lead %>
+      Caracteres disponibles: 
+      <span id="counter" data-maximum-length="<%= @maximum_length %>">
+        <%= @maximum_length %>  
+      </span>
+    <br>
+    <%= f.text_area :lead, maxlength: @maximum_length, id: 'lead'%>
   </div>
+
+
+
 
   <div class="field">
     <%= f.label :cuerpo %>
@@ -30,3 +38,17 @@
     <%= f.submit :Guardar%>
   </div>
 <% end %>
+
+
+<script>
+    $(document).ready(function() {
+      var review_text = $("#lead");
+      var counter     = $("#counter");
+      var max_length  = counter.data("maximum-length");
+
+      review_text.keyup(function() {
+          counter.text(max_length - $(this).val().length);
+      });
+
+    });
+</script>

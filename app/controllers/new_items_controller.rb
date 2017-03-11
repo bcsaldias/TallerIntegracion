@@ -16,10 +16,13 @@ class NewItemsController < ApplicationController
   def new
     @new_item = NewItem.new
     @maximum_length = NewItem.validators_on( :lead ).first.options[:maximum]
+    @current_length = 0
   end
 
   # GET /new_items/1/edit
   def edit
+    @maximum_length = NewItem.validators_on( :lead ).first.options[:maximum]
+    @current_length = @new_item.lead.size
   end
 
   # POST /new_items

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Noticias publicadas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Bajada</th>
+      <th>Cuerpo</th>
+      <th>Creado</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @new_items.each do |new_item| %>
+      <tr>
+        <td><%= new_item.title %></td>
+        <td><%= new_item.lead %></td>
+        <td><%= new_item.body %></td>
+        <td><%= new_item.created_at %></td>
+        <td><%= link_to 'Mostrar', new_item %></td>
+        <td><%= link_to 'Editar', edit_new_item_path(new_item) %></td>
+        <td><%= link_to 'Eliminar', new_item, method: :delete, 
+                              data: { confirm: '¿Estás seguro que deseas eliminar esta noticia?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Crear noticia', new_new_item_path %>

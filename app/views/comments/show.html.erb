@@ -15,5 +15,5 @@
   <%= @comment.news_item.title %>
 </p>
 
-<%= link_to 'Editar', edit_comment_path(@comment) %> |
-<%= link_to 'Volver', comments_path %>
+<%= link_to 'Editar', edit_news_item_comment_path(@comment.news_item.id, @comment) %>
+<%= link_to 'Volver', news_item_comments_path(@comment.news_item.id, @comment) %>

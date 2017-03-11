@@ -2,5 +2,4 @@
 
 <%= render 'form', comment: @comment %>
 
-<%= link_to 'Mostrar', @comment %> |
-<%= link_to 'Volver', comments_path %>
+<%= link_to 'Volver', news_item_comments_path(params[:news_item_id]) %>

@@ -18,9 +18,8 @@
         <td><%= comment.author %></td>
         <td><%= comment.body %></td>
         <td><%= comment.news_item.title %></td>
-        <td><%= link_to 'Mostrar', comment %></td>
-        <td><%= link_to 'Editar', edit_comment_path(comment) %></td>
-        <td><%= link_to 'Eliminar', comment, method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar este Comentario?' } %></td>
+        <td><%= link_to 'Mostrar', news_item_comment_path(comment.news_item.id, comment) %></td>
+        <td><%= link_to 'Eliminar', news_item_comment_path(comment.news_item.id, comment) , method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar este Comentario?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +27,4 @@
 
 <br>
 
-<%= link_to 'Crear comentario', new_comment_path(news_item_id: @news_item_id) %>
+<%= link_to 'Crear comentario', new_news_item_comment_path(@news_item_id) %>

@@ -21,7 +21,7 @@
         <td><%= news_item.lead %></td>
         <td><%= news_item.body %></td>
         <td><%= news_item.created_at %></td>
-        <td><%= link_to  news_item.count_comments, news_item_comments_path(news_item.id)%></td>
+        <td><%= link_to  news_item.comments.count, news_item_comments_path(news_item.id)%></td>
         <td><%= link_to 'Mostrar', news_item %></td>
       </tr>
     <% end %>

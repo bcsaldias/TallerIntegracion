@@ -4,7 +4,7 @@ class NewsItemsController < ApplicationController
   # GET /news_items
   # GET /news_items.json
   def index
-    @news_items = NewsItem.order('created_at DESC')#.limit(10)
+    @news_items = NewsItem.all#.limit(10)
   end
 
   # GET /news_items/1

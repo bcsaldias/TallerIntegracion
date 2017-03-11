@@ -1,5 +1,5 @@
 class NewsItem < ApplicationRecord
-  has_many :comments
+  has_many :comments, dependent: :destroy
   validates :lead, length: {maximum: 250}, allow_blank: true
 
   def comments

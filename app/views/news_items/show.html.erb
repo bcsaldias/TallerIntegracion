@@ -15,5 +15,10 @@
   <%= @news_item.body %>
 </p>
 
+<p>
+  <strong>Creado:</strong>
+  <%= @news_item.created_at %>
+</p>
+
 <%= link_to 'Editar', edit_news_item_path(@news_item) %> |
 <%= link_to 'Volver', news_items_path %>

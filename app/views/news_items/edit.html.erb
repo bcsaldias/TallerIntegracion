@@ -2,5 +2,8 @@
 
 <%= render 'form', news_item: @news_item %>
 
+Creado <%= @news_item.created_at %>
+<br>
+<br>
 <%= link_to 'Mostrar', @news_item %> |
 <%= link_to 'Volver', news_items_path %>

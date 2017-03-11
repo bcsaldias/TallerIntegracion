@@ -1,5 +1,27 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Noticia</h1>
+
+<p>
+  <strong>Título:</strong>
+  <%= @news_item.title %>
+</p>
+
+<p>
+  <strong>Bajada:</strong>
+  <%= @news_item.lead %>
+</p>
+
+<p>
+  <strong>Cuerpo:</strong>
+  <%= @news_item.body %>
+</p>
+
+<p>
+  <strong>Creado:</strong>
+  <%= @news_item.created_at %>
+</p>
+
 <h1>Comentarios</h1>
 
 <table>
@@ -7,7 +29,6 @@
     <tr>
       <th>Autor</th>
       <th>Comentario</th>
-      <th>Título Noticia</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,9 +38,8 @@
       <tr>
         <td><%= comment.author %></td>
         <td><%= comment.body %></td>
-        <td><%= comment.news_item.title %></td>
-        <td><%= link_to 'Mostrar', news_item_comment_path(comment.news_item.id, comment) %></td>
-        <td><%= link_to 'Eliminar', news_item_comment_path(comment.news_item.id, comment) , method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar este Comentario?' } %></td>
+        <!--<td><%= link_to 'Mostrar', news_item_comment_path(comment.news_item.id, comment) %></td>
+        <td><%= link_to 'Eliminar', news_item_comment_path(comment.news_item.id, comment) , method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar este Comentario?' } %></td>-->
       </tr>
     <% end %>
   </tbody>
@@ -27,4 +47,4 @@
 
 <br>
 
-<%= link_to 'Crear comentario', new_news_item_comment_path(@news_item_id) %>
+<%= link_to 'Crear comentario', new_news_item_comment_path(@news_item.id) %>

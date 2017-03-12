@@ -1,3 +1,5 @@
+<%= render "layouts/header" %>
+
   <p id="notice"><%= notice %></p>
 
 
@@ -49,7 +51,10 @@
                       <h4><i class="fa fa-comments-o" aria-hidden="true"></i>
    Comentar:</h4>
 
-                              <%= form_for @comment , :url => news_item_comments_path(@news_item.id, @comment) do |f| %>
+                              <%= form_for @comment , :url => news_item_comments_path(@news_item.id, @comment, 
+                                :_index => params[:_index]=='true', :_admin => params[:_admin]=='true'
+
+                                ) do |f| %>
                                 <% if comment.errors.any? %>
                                   <div id="error_explanation">
                                     <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>

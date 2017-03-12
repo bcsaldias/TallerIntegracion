@@ -43,7 +43,8 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to new_news_item_comment_path, notice: 'Comment was successfully created.' }
+        format.html { redirect_to new_news_item_comment_path(_index: params[:_index] , _admin: params[:_admin]),
+                   notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }

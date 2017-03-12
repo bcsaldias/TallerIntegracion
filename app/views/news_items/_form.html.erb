@@ -38,17 +38,3 @@
     <%= f.submit :Guardar%>
   </div>
 <% end %>
-
-
-<script>
-    $(document).ready(function() {
-      var review_text = $("#lead");
-      var counter     = $("#counter");
-      var max_length  = counter.data("maximum-length");
-
-      review_text.keyup(function() {
-          counter.text(max_length - $(this).val().length);
-      });
-
-    });
-</script>

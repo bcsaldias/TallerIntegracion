@@ -49,7 +49,8 @@ class NewsItemsController < ApplicationController
   def update
     respond_to do |format|
       if @news_item.update(news_item_params)
-        format.html { redirect_to @news_item, notice: 'Noticia editada exitosamente.' }
+        format.html { redirect_to new_news_item_comment_path(news_item_id:@news_item.id,
+                    _index: true, _admin: true), notice: 'Noticia editada exitosamente.' }
         format.json { render :show, status: :ok, location: @news_item }
       else
         format.html { render :edit }

@@ -49,7 +49,7 @@
                       <td><%= news_item.lead %></td>
                       <td><%= news_item.body %></td>
                       <td><%= news_item.created_at.strftime("%Y-%m-%d %H:%M:%S")  %></td>
-                      <td><%= link_to  news_item.comments.count, new_news_item_comment_path(news_item.id)%> <i class="fa fa-comments-o "></i></td>
+                      <td><%= link_to  news_item.comments.count, new_news_item_comment_path(news_item.id, _index: true, _admin: true)%> <i class="fa fa-comments-o "></i></td>
 
 
                       <td><%= link_to  'Mostrar', new_news_item_comment_path(news_item.id, _index: true, _admin: true) %> <i class="fa fa-plus-square-o" aria-hidden="true"></i>

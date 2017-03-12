@@ -94,7 +94,7 @@
 
             <div class="panel-footer">
              <div>
-                 <%= link_to "#{news_item.comments.count} ", news_item_comments_path(news_item.id) %> 
+                 <%= link_to "#{news_item.comments.count} ", news_item_comments_path(news_item.id, _index: true, _admin: false) %> 
                  <i class="fa fa-comments-o "></i>
                  
              </div>

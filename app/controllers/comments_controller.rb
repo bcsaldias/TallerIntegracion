@@ -8,6 +8,8 @@ class CommentsController < ApplicationController
     if params[:news_item_id]
       @news_item = NewsItem.find(id = params[:news_item_id])
       @comments = Comment.where(news_item_id: @news_item.id).entries
+      @comment = @news_item.comments.build #Comment.new
+
     else
       @comments = Comment.all
     end
@@ -21,8 +23,15 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
+
+    if params[:news_item_id]
+      @news_item = NewsItem.find(id = params[:news_item_id])
+      @comments = Comment.where(news_item_id: @news_item.id).entries
+    end 
+    
     @news_item = NewsItem.find params[:news_item_id]
     @comment = @news_item.comments.build #Comment.new
+
   end
 
   # GET /comments/1/edit
@@ -33,12 +42,13 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @news_item = NewsItem.find params[:news_item_id]
+    @comments = Comment.where(news_item_id: @news_item.id).entries
     @comment = @news_item.comments.build(comment_params) #Comment.new
     #@comment = Comment.new(comment_params)
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to news_item_comments_path, notice: 'Comment was successfully created.' }
+        format.html { redirect_to new_news_item_comment_path, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }

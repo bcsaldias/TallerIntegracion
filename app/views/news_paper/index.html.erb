@@ -134,7 +134,7 @@
                        <%= link_to "#{news_item.comments.count} comentarios", news_item_comments_path(news_item.id) %> 
                        </div>
                        <div style="text-align: right;">
-                       <%= link_to  'Ver más', news_item_comments_path(news_item.id)%>
+                       <%= link_to  'Ver más', new_news_item_comment_path(news_item.id)%>
                        </div>
                     </div>
                 </div>

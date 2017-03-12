@@ -1,3 +1,5 @@
+<p id="notice"><%= notice %></p>
+
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -66,7 +68,7 @@
                 <div class="well">
                     <h4>Comentar:</h4>
 
-                            <%= form_for @comment , :url => news_item_comments_path(params[:news_item_id], @comment) do |f| %>
+                            <%= form_for @comment , :url => news_item_comments_path(@news_item.id, @comment) do |f| %>
                               <% if comment.errors.any? %>
                                 <div id="error_explanation">
                                   <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -87,7 +89,7 @@
 
                               <div class="field">
                                 <%= f.label :comentario %>
-                                <%= f.text_area :body , class: 'form-control', rows: '5', cols: '20'%>
+                                <%= f.text_area :body , class: 'form-control', rows: '5', cols: '150'%>
                               </div>
 
                               <div class="actions">

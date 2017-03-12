@@ -10,6 +10,8 @@ class NewsItemsController < ApplicationController
   # GET /news_items/1
   # GET /news_items/1.json
   def show
+      @comments = Comment.where(news_item_id: @news_item.id).entries
+      @comment = @news_item.comments.build #Comment.new
   end
 
   # GET /news_items/new

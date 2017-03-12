@@ -25,6 +25,7 @@ class NewsItem < ApplicationRecord
       								 omission: left)
     else
       self.body
+  
     end
   end
 

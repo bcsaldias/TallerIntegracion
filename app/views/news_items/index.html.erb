@@ -52,7 +52,7 @@
                       <td><%= link_to  news_item.comments.count, new_news_item_comment_path(news_item.id)%> <i class="fa fa-comments-o "></i></td>
 
 
-                      <td><%= link_to  'Mostrar', new_news_item_comment_path(news_item.id, _index: true, _admin: true) %> <i class="fa fa-newspaper-o "></i></td>
+                      <td><%= link_to  'Mostrar', new_news_item_comment_path(news_item.id, _index: true, _admin: true) %> <i class="fa fa-plus-square-o" aria-hidden="true"></i>
 
 
                       <td><%= link_to 'Editar', edit_news_item_path(news_item) %> <i class="fa fa-pencil-square-o" aria-hidden="true"></i>

@@ -23,14 +23,9 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-
-    if params[:news_item_id]
-      @news_item = NewsItem.find(id = params[:news_item_id])
-      @comments = Comment.where(news_item_id: @news_item.id).entries
-    end 
-    
     @news_item = NewsItem.find params[:news_item_id]
-    @comment = @news_item.comments.build #Comment.new
+    @comment = @news_item.comments.build
+    @comments = Comment.where(news_item_id: @news_item.id).entries
 
   end
 

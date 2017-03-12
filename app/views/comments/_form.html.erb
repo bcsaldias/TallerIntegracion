@@ -1,129 +1,118 @@
-<p id="notice"><%= notice %></p>
-
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Publicar noticia</span>
-            </button>
-            <a class="navbar-brand" href=""><%= @news_item.title %></a>
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <%= link_to  'Administración', news_items_path %>
-                </li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-</nav>
-
-<div class="container">
-
-    <!-- Marketing Icons Section -->
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">
-                <%= @news_item.title %>
-            </h1>
-            <p style="text-align: right;"><%= @news_item.created_at.strftime("%Y-%m-%d %H:%M:%S")  %></p>
-
-        </div>
-    </div>
-</div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10">
+  <p id="notice"><%= notice %></p>
 
 
-                  <div class="control-group form-group">
-                      <div class="controls">
-                          <%= @news_item.lead %>
-                      </div>
-                  </div>
+      <%= render "layouts/navbar",  title: @news_item.title, 
+          index: params[:_index]=='true', admin: params[:_admin]=='true' %>
 
-                    <div class='row'>
-                        <hr>
+
+  <div class="container">
+
+      <!-- Marketing Icons Section -->
+      <div class="row">
+          <div class="col-lg-12">
+              <h1 class="page-header">
+                  <%= @news_item.title %>
+              </h1>
+              <p style="text-align: right;"><%= @news_item.created_at.strftime("%Y-%m-%d %H:%M:%S")  %></p>
+
+          </div>
+      </div>
+  </div>
+
+      <div class="container">
+          <div class="row">
+              <div class="col-md-10">
+
+
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <%= @news_item.lead %>
+                        </div>
                     </div>
 
-
-                  <div class="control-group form-group">
-                      <div class="controls">
-                          <%= @news_item.body %>
+                      <div class='row'>
+                          <hr>
                       </div>
-                  </div>
-
-                <hr>
 
 
-                <!-- Comments Form -->
-                <div class="well">
-                    <h4><i class="fa fa-comments-o" aria-hidden="true"></i>
- Comentar:</h4>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <%= @news_item.body %>
+                        </div>
+                    </div>
 
-                            <%= form_for @comment , :url => news_item_comments_path(@news_item.id, @comment) do |f| %>
-                              <% if comment.errors.any? %>
-                                <div id="error_explanation">
-                                  <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+                  <hr>
 
-                                  <ul>
-                                  <% comment.errors.full_messages.each do |message| %>
-                                    <li><%= message %></li>
-                                  <% end %>
-                                  </ul>
+
+                  <!-- Comments Form -->
+                  <div class="well">
+                      <h4><i class="fa fa-comments-o" aria-hidden="true"></i>
+   Comentar:</h4>
+
+                              <%= form_for @comment , :url => news_item_comments_path(@news_item.id, @comment) do |f| %>
+                                <% if comment.errors.any? %>
+                                  <div id="error_explanation">
+                                    <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+                                    <ul>
+                                    <% comment.errors.full_messages.each do |message| %>
+                                      <li><%= message %></li>
+                                    <% end %>
+                                    </ul>
+                                  </div>
+                                <% end %>
+
+                                <div class="field">
+                                  <%= f.label :autor %>
+                                  <br>
+                                  <%= f.text_field :author %>
                                 </div>
+
+                                <div class="field">
+                                  <%= f.label :comentario %>
+                                  <%= f.text_area :body , class: 'form-control', rows: '5', cols: '150'%>
+                                </div>
+
+                                <div class="actions">
+                                  <p style="text-align: right;">
+                                  <%= f.submit :Enviar, class: "btn btn-primary"%>
+                                  <p>
+                                </div>
+
                               <% end %>
-
-                              <div class="field">
-                                <%= f.label :autor %>
-                                <br>
-                                <%= f.text_field :author %>
-                              </div>
-
-                              <div class="field">
-                                <%= f.label :comentario %>
-                                <%= f.text_area :body , class: 'form-control', rows: '5', cols: '150'%>
-                              </div>
-
-                              <div class="actions">
-                                <p style="text-align: right;">
-                                <%= f.submit :Enviar, class: "btn btn-primary"%>
-                                <p>
-                              </div>
-
-                            <% end %>
-                    </form>
-                </div>
-
-                <hr>
-
-                <!-- Posted Comments -->
-
-
-                <% @comments.each do |comment| %>
-                  <!-- Comment -->
-                  <div class="media">
-                      <a class="pull-left" href="">
-                          <img class="media-object" src="http://1plusx.com/app/mu-plugins/all-in-one-seo-pack-pro/images/default-user-image.png"  height="64" width="64" alt="">
-                      </a>
-                      <div class="media-body">
-                          <h4 class="media-heading"><%= comment.author %>:
-                              <small><%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %></small>
-                          </h4>
-                          <%= comment.body %>
-                      </div>
+                      </form>
                   </div>
-                <% end %>
 
-            </div>
-        </div>
-    </div>
-<br>
-<br>
-<br>
-<br>
+
+
+
+                  <!-- Posted Comments -->
+
+
+                  <% @comments.each do |comment| %>
+                    <!-- Comment -->
+                    <div class="media">
+                        <a class="pull-left" href="">
+                            <img class="media-object" src="http://1plusx.com/app/mu-plugins/all-in-one-seo-pack-pro/images/default-user-image.png"  height="64" width="64" alt="">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading"><%= comment.author %>:
+                                <small><%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %></small>
+                            </h4>
+                            <%= comment.body %>
+                        </div>
+                    </div>
+                  <% end %>
+
+              </div>
+          </div>
+      
+          <!-- Footer -->
+          <%= render "layouts/footer" %>
+      </div>
+
+
+  <br>
+  <br>
+  <br>
+  <br>

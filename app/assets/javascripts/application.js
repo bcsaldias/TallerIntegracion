@@ -16,18 +16,6 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-$(document).ready(function() {
-  var review_text = $("#lead");
-  var counter     = $("#counter");
-  var max_length  = counter.data("maximum-length");
-
-  review_text.keyup(function() {
-      counter.text(max_length - $(this).val().length);
-  });
-
-});
-
-
 $.fn.pageMe = function(opts){
   var $this = this,
       defaults = {
@@ -130,8 +118,7 @@ $.fn.pageMe = function(opts){
   }
 };
 
-$(document).ready(function(){
-    
-  $('#news-table').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:20});
-    
+
+$(document).ready(function() {
+
 });

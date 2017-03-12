@@ -66,7 +66,8 @@
 
                 <!-- Comments Form -->
                 <div class="well">
-                    <h4>Comentar:</h4>
+                    <h4><i class="fa fa-comments-o" aria-hidden="true"></i>
+ Comentar:</h4>
 
                             <%= form_for @comment , :url => news_item_comments_path(@news_item.id, @comment) do |f| %>
                               <% if comment.errors.any? %>
@@ -110,8 +111,8 @@
                 <% @comments.each do |comment| %>
                   <!-- Comment -->
                   <div class="media">
-                      <a class="pull-left" href="#">
-                          <img class="media-object" src="http://placehold.it/64x64" alt="">
+                      <a class="pull-left" href="">
+                          <img class="media-object" src="http://1plusx.com/app/mu-plugins/all-in-one-seo-pack-pro/images/default-user-image.png"  height="64" width="64" alt="">
                       </a>
                       <div class="media-body">
                           <h4 class="media-heading"><%= comment.author %>:

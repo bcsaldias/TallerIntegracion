@@ -40,7 +40,7 @@ index: params[:_index]=='true', admin: params[:_admin]=='true' %>
       <div class="control-group form-group">
         <div class="controls">
           <%= f.text_area :body, class: 'form-control',
-          rows: '15', cols: '100', :readonly=>true%>
+           cols: '100', :readonly=>true%>
         </div>
       </div>
       <% end %>
@@ -125,3 +125,14 @@ index: params[:_index]=='true', admin: params[:_admin]=='true' %>
     <br>
     <br>
     <br>
+
+  <script type="text/javascript">
+    
+
+    $(function() {
+        $('textarea').each(function() {
+            $(this).height($(this).prop('scrollHeight'));
+        });
+    });
+
+  </script>

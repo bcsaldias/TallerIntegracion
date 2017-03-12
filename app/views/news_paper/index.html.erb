@@ -65,7 +65,7 @@
 
             <% @news_items.each do |news_item| %>
             
-            <div class="col-lg-6 col-lg-offset-3">
+            <div class="col-lg-10 col-lg-offset-1">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4><i class="fa fa-chevron-circle-up"></i> <%= news_item.title %></h4>
@@ -83,9 +83,15 @@
                 </div>
             </div>
 
-            <div class="panel-body">
-                <p><td><%= news_item.body %></td></p>
-            </div>
+              <%= form_for(news_item) do |f| %>
+              <div class="control-group form-group">
+                <div class="controls">
+                  <%= f.text_area :body, class: 'form-control',
+                  cols: '100', :readonly=>true%>
+                </div>
+              </div>
+              <% end %>
+
             <div class="panel-footer">
              <div>
                  <%= link_to "#{news_item.comments.count} ", news_item_comments_path(news_item.id) %> 
@@ -127,6 +133,14 @@
     $('.carousel').carousel({
         interval: 3000 //changes the speed
     })
+
+
+    $(function() {
+        $('textarea').each(function() {
+            $(this).height($(this).prop('scrollHeight'));
+        });
+    });
+
 </script>
 
 </body>

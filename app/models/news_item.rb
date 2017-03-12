@@ -2,6 +2,7 @@ class NewsItem < ApplicationRecord
   has_many :comments, dependent: :destroy
   validates :lead, length: {maximum: 250}, allow_blank: true
   default_scope { order(created_at: :desc) }
+  attr_readonly :created_at
   #after_initialize :cropped_body
 
   def self.index_formatted_list

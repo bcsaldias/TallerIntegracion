@@ -1,5 +1,5 @@
 # IIC3103 - Taller de Integración - 2017-1
-## - bcsaldias
+## bcsaldias
 
 Se presenta una aplicación de juguete, sin administración de usuarios. El modelo de datos de esta es:
 

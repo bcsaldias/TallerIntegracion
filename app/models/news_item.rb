@@ -5,12 +5,6 @@ class NewsItem < ApplicationRecord
   attr_readonly :created_at
   #after_initialize :cropped_body
 
-  def self.index_formatted_list
-    NewsItem.limit(10).each do |item|
-      item.cropped_body
-    end
-  end
-  
   def self.formatted_list
     NewsItem.all.each do |item|
       item.cropped_body

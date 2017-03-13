@@ -26,7 +26,6 @@ class CommentsController < ApplicationController
     @news_item = NewsItem.find params[:news_item_id]
     @comment = @news_item.comments.build
     @comments = Comment.where(news_item_id: @news_item.id).entries
-
   end
 
   # GET /comments/1/edit
@@ -36,6 +35,8 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
+    @fields = {"body": "Comentario", "author": "Autor"} 
+
     @news_item = NewsItem.find params[:news_item_id]
     @comments = Comment.where(news_item_id: @news_item.id).entries
     @comment = @news_item.comments.build(comment_params) #Comment.new
@@ -44,7 +45,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         format.html { redirect_to new_news_item_comment_path(_index: params[:_index] , _admin: params[:_admin]),
-                   notice: 'Comment was successfully created.' }
+                   notice: 'Comentario creado con éxito.' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }

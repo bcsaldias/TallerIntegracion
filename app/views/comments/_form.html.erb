@@ -1,8 +1,5 @@
 <%= render "layouts/header" %>
 
-<p id="notice"><%= notice %></p>
-
-
 <%= render "layouts/navbar",  title: @news_item.title, 
 index: params[:_index]=='true', admin: params[:_admin]=='true' %>
 
@@ -16,6 +13,7 @@ index: params[:_index]=='true', admin: params[:_admin]=='true' %>
         <%= @news_item.title %>
       </h1>
       <p style="text-align: right;"><%= @news_item.created_at.strftime("%Y-%m-%d %H:%M:%S")  %></p>
+         <p id="notice"><%= notice %></p>
 
     </div>
   </div>
@@ -61,11 +59,16 @@ index: params[:_index]=='true', admin: params[:_admin]=='true' %>
           ) do |f| %>
           <% if comment.errors.any? %>
           <div id="error_explanation">
-            <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+            <% if comment.errors.count > 1 %>
+            <h2><%= comment.errors.count %> errores prohiben crear este comentario:</h2>
+            <% elsif comment.errors.count == 1 %>
+            <h2><%= comment.errors.count %> error prohibe crear este comentario:</h2>
+            <% end %>
 
             <ul>
-              <% comment.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
+              <% comment.errors.each do |attr, message| %>
+              <li>'<%= @fields[attr]%>' <%= message %></li>
               <% end %>
             </ul>
           </div>

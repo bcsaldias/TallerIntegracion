@@ -19,7 +19,7 @@ class NewsItem < ApplicationRecord
 
   def cropped_body 
     left = '...'
-    nb_words_max = 1000 + left.length
+    nb_words_max = 1000 #+ left.length #what the user prefers
     if self.body and self.body.length > nb_words_max
       self.body = self.body.truncate(nb_words_max,
       								 separator: ' ',
